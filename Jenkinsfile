@@ -47,7 +47,7 @@ pipeline {
                               branch "master"
                         }
                         steps{
-                                dir("project_templates/java_project_template"){
+                                
                                 script {
                                       def server = Artifactory.server('arti')
                                       def rtMaven = Artifactory.newMavenBuild()
@@ -55,8 +55,7 @@ pipeline {
                                       rtMaven.deployer server: server, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
                                       rtMaven.tool = 'M3'
                                       def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'install'
-                                       server.publishBuildInfo buildInfo
-                                }
+                                      server.publishBuildInfo buildInfo
                               }
                            }
                         }
