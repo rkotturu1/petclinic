@@ -59,15 +59,4 @@ pipeline {
                         }
 
   	}
-	post {
-		always {
-			notify('started')
-		}
-		failure {
-			notify('err')
-		}
-		success {
-			notify('success')
-		}
-	}
 }
